@@ -144,6 +144,12 @@ class GT38:
         else:
             return False
 
+    def displayParameters(self):
+        print ('Speed '+ str(self.speed))
+        print ('Mode '+ str(self.mode))
+        print ('Channel '+ str(self.channel))
+        print ('Power '+ self.power)
+
     def send (self, message):
         self.wirelessCommunication.baudrate = self.speed
         return self.sendToDevice(message)
