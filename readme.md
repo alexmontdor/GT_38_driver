@@ -1,24 +1,31 @@
 # GT-38 Wireless Communication Module Driver
-
 This driver is designed to help using a GT-38 Wireless Communication Module with a Raspberry PI (zero or 3) and its GPIO.
 
-# How to connect the GT-38 to your raspberry GPIO
+# How to connect the GT-38 Wireless Communication Module to your raspberry GPIO
 GT-38 Pin -> RASPBERRY GPIO Pin
+
 VCC -> 3.3V
+
 GND -> GROUND
+
 RX -> TX (pin 9)
+
 TX -> RX (pin 10)
+
 SET -> a pin to be chosen
 
 # How to use the class
-
 Import the class 
+
 example
 'from GT38 import GT38'
 
 Call the class like GT38 (SetPin)
+
 example
+
 'comModule = GT38(6)'
+
 # Parameters
 speed
 mode
