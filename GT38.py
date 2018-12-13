@@ -5,6 +5,7 @@ import time
 import RPi.GPIO as GPIO
 
 class GT38:
+    speed = 0
     def __init__ (self, pin):
         self.setPin = pin
         # Setting the Communication to 
