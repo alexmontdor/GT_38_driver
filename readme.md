@@ -14,11 +14,11 @@ TX -> RX (pin 10)
 
 SET -> a pin to be chosen
 
-# How to use the class
+# How to use the seiver
 Import the class 
 
 example
-'from GT38 import GT38'
+'from GT_38_driver.GT38 import GT38'
 
 Call the class like GT38 (SetPin)
 
@@ -27,8 +27,13 @@ example
 'comModule = GT38(6)'
 
 # Parameters
-speed
-mode
+speed : integer in bauds
+
+mode : integer between 1 and 4
+
+power : string
+
+channel: integer between 1 ans 120
 
 
 # Methods
