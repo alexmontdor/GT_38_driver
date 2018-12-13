@@ -43,6 +43,7 @@ class GT38:
 #       print (request)
         self.sendToDevice(request)
         self.parseAnswer(self.receive())
+        self.parseAnswer(self.receive())
         GPIO.output(self.setPin, GPIO.HIGH)
         
     def setSpeed(self, newSpeed):
@@ -119,7 +120,7 @@ class GT38:
         return answer
 
     def parseAnswer(self, GT38response):
-#        print ('Answer', GT38response)
+        print ('Answer', GT38response)
         if (GT38response[0:5] == ' OK+B'):
             self.speed = int(GT38response[5:])
             return True
@@ -127,7 +128,7 @@ class GT38:
             self.channel = int(GT38response[5:])
             return True
         if (GT38response[0:6] == ' OK+FU'):
-            self.mode = int(GT38response[6:])
+            self.mode = int(GT38response[6:7])
             return True
         if (GT38response[0:7] == ' OK+RP:'):
             self.power = GT38response[7:-2]
