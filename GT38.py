@@ -26,10 +26,10 @@ class GT38:
 #        print ('Getting GT-38 Params')
         request = "AT+RX\r\n"
         self.sendToDevice(request)
-        self.parseAnswer(self.receive())
-        self.parseAnswer(self.receive())
-        self.parseAnswer(self.receive())
-        self.parseAnswer(self.receive())
+        self.parseAnswer(self.receiveFromDevice())
+        self.parseAnswer(self.receiveFromDevice())
+        self.parseAnswer(self.receiveFromDevice())
+        self.parseAnswer(self.receiveFromDevice())
         GPIO.output(self.setPin, GPIO.HIGH)
         return True
 
@@ -41,7 +41,7 @@ class GT38:
         request="AT+DEFAULT\r\n"
 #       print (request)
         self.sendToDevice(request)
-        self.parseAnswer(self.receive())
+        self.parseAnswer(self.receiveFromDevice())
         GPIO.output(self.setPin, GPIO.HIGH)
         
     def setSpeed(self, newSpeed):
@@ -52,7 +52,7 @@ class GT38:
             request="AT+B"+str(newSpeed)+"\r\n"
 #            print (request)
             self.sendToDevice(request)
-            if (self.parseAnswer(self.receive())):
+            if (self.parseAnswer(self.receiveFromDevice())):
                 GPIO.output(self.setPin, GPIO.HIGH)
                 return True
             else:
@@ -70,7 +70,7 @@ class GT38:
             request="AT+FU"+str(newMode)+"\r\n"
 #            print (request)
             self.sendToDevice(request)
-            if (self.parseAnswer(self.receive())):
+            if (self.parseAnswer(self.receiveFromDevice())):
                 GPIO.output(self.setPin, GPIO.HIGH)
                 return True
             else:
@@ -89,7 +89,7 @@ class GT38:
             request="AT+C"+str(newChannel)+"\r\n"
 #            print (request)
             self.sendToDevice(request)
-            if (self.parseAnswer(self.receive())):
+            if (self.parseAnswer(self.receiveFromDevice())):
                 GPIO.output(self.setPin, GPIO.HIGH)
                 return True
             else:
@@ -99,7 +99,7 @@ class GT38:
             GPIO.output(self.setPin, GPIO.HIGH)
             return False
 
-    def receive(self):
+    def receiveFromDevice(self):
         # get the answer from GT38
         #time.sleep(.1)
         # Waiting for a line to receive
@@ -153,3 +153,8 @@ class GT38:
     def send (self, message):
         self.wirelessCommunication.baudrate = self.speed
         return self.sendToDevice(message)
+
+    def receive(self):
+        self.wirelessCommunication.baudrate = self.speed
+        return self.receiveFromDevice()
+        
